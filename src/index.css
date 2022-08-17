@@ -13,6 +13,7 @@
 
   /* grey */
   --grey-50: #f0f4f8;
+  --grey-600: #486581;
   --grey-900: #102a43;
 
   /* rest of the colors */
@@ -30,6 +31,7 @@
   --transition: 0.3s ease-in-out all;
   --max-width: 1120px;
   --fluid-width: 90vw;
+  --nav-height: 6rem;
 
   /* box shadow */
   --shadow-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
