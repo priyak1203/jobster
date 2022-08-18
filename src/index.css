@@ -13,6 +13,7 @@
 
   /* grey */
   --grey-50: #f0f4f8;
+  --grey-500: #627d98;
   --grey-600: #486581;
   --grey-900: #102a43;
 
@@ -64,7 +65,8 @@ p {
   max-width: 40em;
 }
 
-h1 {
+h1,
+h3 {
   margin: 0;
   margin-bottom: 1.38rem;
   font-family: var(--headingFont);
@@ -77,6 +79,10 @@ h1 {
 h1 {
   margin-top: 0;
   font-size: 3.052rem;
+}
+
+h3 {
+  font-size: 1.953rem;
 }
 
 a {
@@ -127,4 +133,8 @@ button:disabled {
   width: var(--fluid-width);
   max-width: var(--max-width);
   margin: 0 auto;
+}
+
+.full-page {
+  min-height: 100vh;
 }
