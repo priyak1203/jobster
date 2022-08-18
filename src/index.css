@@ -79,6 +79,18 @@ h1 {
   font-size: 3.052rem;
 }
 
+a {
+  text-decoration: none;
+  letter-spacing: var(--letterSpacing);
+}
+
+a,
+button {
+  line-height: 1.15;
+}
+button:disabled {
+  cursor: not-allowed;
+}
 .img {
   width: 100%;
   display: block;
