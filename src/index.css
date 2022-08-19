@@ -182,6 +182,7 @@ button:disabled {
   border-radius: var(--borderRadius);
   background: var(--backgroundColor);
   border: 1px solid var(--grey-200);
+  outline: none;
 }
 
 .form-input,
