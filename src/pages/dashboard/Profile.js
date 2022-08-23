@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import Wrapper from '../../assets/wrappers/DashboardFormPage';
 import { FormRow } from '../../components';
 
@@ -14,12 +15,23 @@ const Profile = () => {
   });
 
   const handleChange = (e) => {
-    console.log(e.target);
+    const name = e.target.name;
+    const value = e.target.value;
+    setUserData({ ...userData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { name, lastName, email, location } = userData;
+    if (!name || !lastName || !email || !location) {
+      toast.error('please fill out all fields ');
+      return;
+    }
   };
 
   return (
     <Wrapper>
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit}>
         <h3>profile</h3>
         <div className="form-center">
           <FormRow
