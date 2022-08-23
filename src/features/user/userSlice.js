@@ -28,8 +28,6 @@ export const registerUser = createAsyncThunk(
 export const loginUser = createAsyncThunk(
   'user/loginUser',
   async (user, thunkAPI) => {
-    console.log(thunkAPI);
-    console.log(thunkAPI.getState());
     try {
       const response = await customFetch.post('/auth/login', user);
       return response.data;
@@ -46,11 +44,15 @@ export const updateUser = createAsyncThunk(
       const response = await customFetch.patch('/auth/updateUser', user, {
         headers: {
           authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
+          // authorization: `bearer ${thunkAPI.getState().user.user.token}`,  // incorrect token showing authorization error.
         },
       });
       return response.data;
     } catch (error) {
-      console.log(error.response);
+      if (error.response.status === 401) {
+        thunkAPI.dispatch(logoutUser());
+        return thunkAPI.rejectWithValue('Unauthorized! Logging Out...');
+      }
       return thunkAPI.rejectWithValue(error.response.data.msg);
     }
   }
