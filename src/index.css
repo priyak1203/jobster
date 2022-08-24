@@ -21,6 +21,7 @@
 
   /* rest of the colors */
   --white: #fff;
+  --black: #222;
   --red-dark: #842029;
 
   /* fonts */
@@ -184,7 +185,8 @@ button:disabled {
   border-radius: var(--borderRadius);
   background: var(--backgroundColor);
   border: 1px solid var(--grey-200);
-  outline: none;
+  /* outline: var(--primary-500); */
+  outline-color: var(--primary-500);
 }
 
 .form-input,
