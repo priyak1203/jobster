@@ -5,9 +5,15 @@ import Wrapper from '../../assets/wrappers/DashboardFormPage';
 import { FormRow } from '../../components';
 
 const AddJob = () => {
-  const { isLoading, position, company, jobLocation, isEditing } = useSelector(
-    (store) => store.job
-  );
+  const {
+    isLoading,
+    position,
+    company,
+    jobLocation,
+    isEditing,
+    status,
+    statusOptions,
+  } = useSelector((store) => store.job);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -52,6 +58,24 @@ const AddJob = () => {
             handleChange={handleJobInput}
           />
           {/* job status */}
+          <div className="form-row">
+            <label htmlFor="status" className="form-label">
+              status
+            </label>
+            <select
+              name="status"
+              id="status"
+              className="form-input"
+              value={status}
+              onChange={handleJobInput}
+            >
+              {statusOptions.map((itemValue, index) => (
+                <option key={index} value={itemValue}>
+                  {itemValue}
+                </option>
+              ))}
+            </select>
+          </div>
 
           {/* job type */}
 
