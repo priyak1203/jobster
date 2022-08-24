@@ -26,7 +26,7 @@ const Profile = () => {
     e.preventDefault();
     const { name, lastName, email, location } = userData;
     if (!name || !lastName || !email || !location) {
-      toast.error('please fill out all fields ');
+      toast.error('please fill out all fields');
       return;
     }
     dispatch(updateUser(userData));
