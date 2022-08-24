@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import Wrapper from '../../assets/wrappers/DashboardFormPage';
-import { FormRow } from '../../components';
+import { FormRow, FormRowSelect } from '../../components';
 
 const AddJob = () => {
   const {
@@ -10,6 +10,8 @@ const AddJob = () => {
     position,
     company,
     jobLocation,
+    jobType,
+    jobTypeOptions,
     isEditing,
     status,
     statusOptions,
@@ -58,26 +60,20 @@ const AddJob = () => {
             handleChange={handleJobInput}
           />
           {/* job status */}
-          <div className="form-row">
-            <label htmlFor="status" className="form-label">
-              status
-            </label>
-            <select
-              name="status"
-              id="status"
-              className="form-input"
-              value={status}
-              onChange={handleJobInput}
-            >
-              {statusOptions.map((itemValue, index) => (
-                <option key={index} value={itemValue}>
-                  {itemValue}
-                </option>
-              ))}
-            </select>
-          </div>
-
+          <FormRowSelect
+            name="status"
+            value={status}
+            list={statusOptions}
+            handleChange={handleJobInput}
+          />
           {/* job type */}
+          <FormRowSelect
+            labelText="job type"
+            name="jobType"
+            value={jobType}
+            list={jobTypeOptions}
+            handleChange={handleJobInput}
+          />
 
           <div className="btn-container">
             {/* clear button  */}
