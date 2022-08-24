@@ -6,6 +6,7 @@ import {
   getUserFromLocalStorage,
   removeUserFromLocalStorage,
 } from '../../utils/localStorage';
+import { loginUserThunk } from './userThunk';
 
 const initialState = {
   isSidebarOpen: false,
@@ -28,12 +29,13 @@ export const registerUser = createAsyncThunk(
 export const loginUser = createAsyncThunk(
   'user/loginUser',
   async (user, thunkAPI) => {
-    try {
-      const response = await customFetch.post('/auth/login', user);
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data.msg);
-    }
+    return loginUserThunk('/auth/login', user, thunkAPI);
+    // try {
+    //   const response = await customFetch.post('/auth/login', user);
+    //   return response.data;
+    // } catch (error) {
+    //   return thunkAPI.rejectWithValue(error.response.data.msg);
+    // }
   }
 );
 
