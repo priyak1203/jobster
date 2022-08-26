@@ -48,7 +48,18 @@ const Wrapper = styled.article`
     padding: 1rem 1.5rem;
   }
   .content-center {
-    background-color: greenyellow;
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 0.5rem;
+    @media (min-width: 576px) {
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (min-width: 992px) {
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 1120px) {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   .status {
@@ -91,6 +102,10 @@ const Wrapper = styled.article`
   .delete-btn {
     color: var(--red-dark);
     background: var(--red-light);
+  }
+
+  &:hover .actions {
+    visibility: visible;
   }
 `;
 
