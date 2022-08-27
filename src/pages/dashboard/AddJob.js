@@ -9,7 +9,6 @@ import {
   editJob,
   handleChange,
 } from '../../features/job/jobSlice';
-import { getUserFromLocalStorage } from '../../utils/localStorage';
 
 const AddJob = () => {
   const {

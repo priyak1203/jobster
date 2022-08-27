@@ -69,7 +69,6 @@ export const editJob = createAsyncThunk(
         },
       });
       thunkAPI.dispatch(clearValues());
-      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.msg);
