@@ -6,6 +6,7 @@ import { FormRow, FormRowSelect } from '../../components';
 import {
   clearValues,
   createJob,
+  editJob,
   handleChange,
 } from '../../features/job/jobSlice';
 import { getUserFromLocalStorage } from '../../utils/localStorage';
@@ -21,6 +22,7 @@ const AddJob = () => {
     isEditing,
     status,
     statusOptions,
+    editJobId,
   } = useSelector((store) => store.job);
   const { user } = useSelector((store) => store.user);
 
@@ -31,6 +33,22 @@ const AddJob = () => {
 
     if (!position || !company || !location) {
       toast.error('please fill out all fields');
+      return;
+    }
+
+    if (isEditing) {
+      dispatch(
+        editJob({
+          jobId: editJobId,
+          job: {
+            position,
+            company,
+            jobLocation,
+            jobType,
+            status,
+          },
+        })
+      );
       return;
     }
     dispatch(createJob({ position, company, jobLocation, status, jobType }));
@@ -107,7 +125,7 @@ const AddJob = () => {
               disabled={isLoading}
               onClick={handleSubmit}
             >
-              {isLoading ? 'please wait...' : 'submit'}
+              submit
             </button>
           </div>
         </div>
