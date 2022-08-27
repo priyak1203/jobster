@@ -43,7 +43,9 @@ const AddJob = () => {
   };
 
   useEffect(() => {
-    dispatch(handleChange({ name: 'jobLocation', value: user.location }));
+    if (!isEditing) {
+      dispatch(handleChange({ name: 'jobLocation', value: user.location }));
+    }
   }, []);
 
   return (
@@ -105,7 +107,7 @@ const AddJob = () => {
               disabled={isLoading}
               onClick={handleSubmit}
             >
-              submit
+              {isLoading ? 'please wait...' : 'submit'}
             </button>
           </div>
         </div>
