@@ -87,6 +87,7 @@ const Register = () => {
         <button
           type="button"
           className="btn btn-block btn-hipster"
+          disabled={isLoading}
           onClick={() =>
             dispatch(
               loginUser({ email: 'testUser@test.com', password: 'secret' })
