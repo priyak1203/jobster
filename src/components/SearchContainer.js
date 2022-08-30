@@ -1,20 +1,22 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Wrapper from '../assets/wrappers/SearchContainer';
-import FormRow from './FormRow';
-import FormRowSelect from './FormRowSelect';
+import { FormRow, FormRowSelect } from '.';
+import { clearFilters, handleChange } from '../features/allJobs/allJobsSlice';
 
 const SearchContainer = () => {
   const { isLoading, search, searchStatus, searchType, sort, sortOptions } =
     useSelector((store) => store.allJobs);
   const { jobTypeOptions, statusOptions } = useSelector((store) => store.job);
+  const dispatch = useDispatch();
 
   const handleSearch = (e) => {
-    console.log(e.target);
+    dispatch(handleChange({ name: e.target.name, value: e.target.value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(clearFilters());
   };
 
   return (
