@@ -27,7 +27,7 @@ const PageBtnContainer = () => {
 
   return (
     <Wrapper>
-      <button className="prev-btn" onClick={prevPage}>
+      <button className="prev-btn" onClick={prevPage} type="button">
         <HiChevronDoubleLeft />
         prev
       </button>
@@ -36,13 +36,14 @@ const PageBtnContainer = () => {
           <button
             key={pageNumber}
             className={pageNumber === page ? 'pageBtn active' : 'pageBtn'}
+            type="button"
             onClick={() => dispatch(changePage(pageNumber))}
           >
             {pageNumber}
           </button>
         ))}
       </div>
-      <button className="next-btn" onClick={nextPage}>
+      <button className="next-btn" onClick={nextPage} type="button">
         next <HiChevronDoubleRight />
       </button>
     </Wrapper>

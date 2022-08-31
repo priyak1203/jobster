@@ -24,7 +24,13 @@ const initialState = {
 export const getAllJobs = createAsyncThunk(
   'allJobs/getJobs',
   async (_, thunkAPI) => {
-    let url = `/jobs`;
+    const { page, searchStatus, searchType, sort, search } =
+      thunkAPI.getState().allJobs;
+
+    let url = `/jobs?status=${searchStatus}&jobType=${searchType}&sort=${sort}&page=${page}`;
+    if (search) {
+      url += `&search=${search}`;
+    }
     try {
       const response = await customFetch.get(url);
       return response.data;
